@@ -1,0 +1,35 @@
+PWD := $(shell pwd)
+GTEST_LIBS := /usr/local/lib
+
+PROJECT := myproject
+COMMENT := 'Aporia makefile template'
+DEP_PROJECTS :=
+PROJDIRS :=
+PROJTESTDIRS :=
+
+RM := rm -rf
+MKDIR := mkdir -p
+G++ := g++
+
+-include ../env.mk
+
+USER_OBJS :=
+SYS_INCS :=
+
+CPP_TARGET := lib$(PROJECT).so
+CPP_PROJECT_LINK_FLAGS := -shared
+CPP_PROJECT_FLAGS := -fPIC
+CPP_PROJECT_LIB_PATHS :=
+CPP_PROJECT_LIBS :=
+
+DEBUG_PROJECT_LINK_FLAGS := -fprofile-arcs -ftest-coverage
+DEBUG_PROJECT_FLAGS := -fprofile-arcs -ftest-coverage
+DEBUG_PROJECT_LIB_PATHS :=
+DEBUG_PROJECT_LIBS :=
+
+TEST_PROJECT_FLAGS := -fprofile-arcs -ftest-coverage
+TEST_PROJECT_LIB_PATHS :=
+TEST_PROJECT_LIBS := -pthread $(GTEST_LIBS)/libgtest.a $(GTEST_LIBS)/libgtest_main.a -lgcov
+TEST_PROJECT_LINK_FLAGS := -fprofile-arcs -ftest-coverage
+
+-include ../../tools/build/linux/linux.mk
