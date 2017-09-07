@@ -16,8 +16,7 @@ G++ := g++
 USER_OBJS :=
 SYS_INCS :=
 
-CPP_TARGET := lib$(PROJECT).so
-CPP_PROJECT_LINK_FLAGS := -shared
+CPP_PROJECT_LINK_FLAGS :=
 CPP_PROJECT_FLAGS := -fPIC
 CPP_PROJECT_LIB_PATHS :=
 CPP_PROJECT_LIBS :=
@@ -32,4 +31,12 @@ TEST_PROJECT_LIB_PATHS :=
 TEST_PROJECT_LIBS := -pthread $(GTEST_LIBS)/libgtest.a $(GTEST_LIBS)/libgtest_main.a -lgcov
 TEST_PROJECT_LINK_FLAGS := -fprofile-arcs -ftest-coverage
 
--include ../../tools/build/linux/linux.mk
+# Comment/delete includes that aren't needed, but preserve the included order
+-include ../../tools/build/linux/base.mk       # Required
+-include ../../tools/build/linux/shared.mk     # Incompatible with exec
+-include ../../tools/build/linux/static.mk     # Incompatible with exec
+-include ../../tools/build/linux/exec.mk       # Incompatible with shared & static
+-include ../../tools/build/linux/compile.mk    # Required
+-include ../../tools/build/linux/targets.mk    # Required
+-include ../../tools/build/linux/test.mk       # Required
+-include ../../tools/build/linux/eclipse.mk

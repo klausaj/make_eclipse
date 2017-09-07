@@ -1,0 +1,37 @@
+PWD := $(shell pwd)
+
+PROJECT := core
+COMMENT := 'Aporia template project'
+DEP_PROJECTS :=
+
+RM := rm -rf
+MKDIR := mkdir -p
+G++ := cl.exe
+
+-include ../env.mk
+
+USER_OBJS :=
+
+CPP_PROJECT_LINK_FLAGS :=
+CPP_PROJECT_FLAGS := -LD -MT
+CPP_PROJECT_LIB_PATHS :=
+CPP_PROJECT_LIBS := LIBCMT.LIB kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+
+DEBUG_PROJECT_LINK_FLAGS :=
+DEBUG_PROJECT_FLAGS :=
+DEBUG_PROJECT_LIB_PATHS :=
+DEBUG_PROJECT_LIBS :=
+
+TEST_PROJECT_FLAGS := -I"$(GTEST_HOME)"/include
+TEST_PROJECT_LIB_PATHS := -LIBPATH:"$(GTEST_HOME)"/lib
+TEST_PROJECT_LIBS := gtest.lib gtest_main.lib
+TEST_PROJECT_LINK_FLAGS :=
+
+-include ../../tools/build/linux/base.mk       # Required
+-include ../../tools/build/linux/shared.mk     # Incompatible with exec
+-include ../../tools/build/linux/static.mk     # Incompatible with exec
+-include ../../tools/build/linux/exec.mk       # Incompatible with shared & static
+-include ../../tools/build/linux/compile.mk    # Required
+-include ../../tools/build/linux/targets.mk    # Required
+-include ../../tools/build/linux/test.mk       # Required
+-include ../../tools/build/linux/eclipse.mk

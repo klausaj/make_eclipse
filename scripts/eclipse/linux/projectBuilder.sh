@@ -58,7 +58,7 @@ for inc in $INCLUDES; do
     PREAMBLE="\n\t\t\t\t\t\t\t\t\t"
 done
 
-IFS=';'
+IFS=;
 for inc in $SYSINCS; do
     INC_STR="<listOptionValue builtIn=\"false\" value=\"\&quot;$inc\&quot;\"/>"
     PROJECT_INCS="$PROJECT_INCS$PREAMBLE$INC_STR"

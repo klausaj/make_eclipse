@@ -12,7 +12,7 @@ TESTDIRS := test $(PROJTESTDIRS)
 ALLDIRS := $(SUBDIRS) $(TESTDIRS)
 
 # All of the sources participating in the build are defined here
-CPP_FIND = $(wildcard $(sub)/*.cpp) $(wildcard $(sub)/*/*.cpp)
+CPP_FIND = $(shell find $(sub)/ -type f -name *.cpp)
 
 TESTAPP_SRCS := $(wildcard test/*_test.cpp)
 CPP_SRCS := $(filter-out $(TEST_SRCS),$(foreach sub,$(SUBDIRS),$(CPP_FIND)))

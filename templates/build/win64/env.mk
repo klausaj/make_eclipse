@@ -1,0 +1,11 @@
+MSVS_HOME := C:\\Program Files (x86)\\Microsoft Visual Studio 14.0
+WIN_SDK_INC := C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.10586.0
+WIN_SDK_LIB := C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.10586.0
+GTEST_HOME := C:\\Program Files (x86)\\GTest
+SDL2_HOME := C:\\Program Files (x86)\\SDL2-2.0.5
+SDL2_INCS := C:/Program Files (x86)/SDL2-2.0.5/include
+GLM_HOME := C:\\Program Files (x86)\\glm
+GLM_INCS := C:/Program Files (x86)/glm/include
+GLEW_HOME := C:\\Program Files (x86)\\glew-2.0.0
+GLEW_INCS := C:/Program Files (x86)/glew-2.0.0/include
+GLU_INC := C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.10586.0\\um
