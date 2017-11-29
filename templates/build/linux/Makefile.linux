@@ -2,7 +2,7 @@ PWD := $(shell pwd)
 GTEST_LIBS := /usr/local/lib
 
 PROJECT := myproject
-COMMENT := 'Aporia makefile template'
+COMMENT := 'Makefile template'
 DEP_PROJECTS :=
 PROJDIRS :=
 PROJTESTDIRS :=
