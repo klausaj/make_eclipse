@@ -44,15 +44,18 @@ valgrind: release $(VALGRIND_REPORTS)
 $(foreach tgt,$(TEST_TARGETS),$(eval $(call TEST_RULE,$(tgt),$(subst build/,,$(dir $(tgt))),$(notdir $(tgt)))))
 
 cppcheck: report/cppcheck.xml
+
+report/cppcheck.xml: $(CPP_SRCS) $(CPP_INCS)
 	@echo 'Running cppcheck'
 	@$(MKDIR) report
-	@cppcheck --inline-suppr --xml -I public $(DEP_INC) --enable=all --suppress=missingInclude --inconclusive --xml-version=2 --std=posix . 2> report/cppcheck.xml && test 6 -eq `grep -v -e '^$$' report/cppcheck.xml | wc -l`
+	@rm -f report/cppcheck_err.xml && cppcheck --inline-suppr --xml -I public $(DEP_INC) --enable=all --suppress=missingInclude --inconclusive --xml-version=2 --std=posix . 2> report/cppcheck.xml && test 6 -eq `grep -v -e '^$$' report/cppcheck.xml | wc -l` || mv report/cppcheck.xml report/cppcheck_err.xml
+	@test -f report/cppcheck.xml
 	@echo 'Finished running cppcheck'
 	@echo ' '
 
-report/cppcheck.xml: $(CPP_SRCS) $(CPP_INCS)
-
 lcov: report/lcov/index.html
+
+report/lcov/index.html: test $(TEST_TARGETS)
 ifeq ($(TEST_TARGETS),)
 	@echo 'Skipping test coverage report'
 else
@@ -65,5 +68,3 @@ else
 	@echo 'Finished generating test coverage report'
 	@echo ' '
 endif
-
-report/lcov/index.html: test

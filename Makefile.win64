@@ -3,6 +3,10 @@ BASE_DIR=`pwd`/..
 SUBDIRS := proj1/ proj2/
 TARGETS := $(MAKECMDGOALS)
 
+ifeq ($(TARGETS),)
+TARGETS := all
+endif
+
 # foo/.all bar/.all foo/.clean bar/.clean
 SUBDIRS_TARGETS := \
     $(foreach t,$(TARGETS),$(addsuffix $t,$(SUBDIRS)))

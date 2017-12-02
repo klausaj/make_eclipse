@@ -1,7 +1,7 @@
 ALL_TARGETS = $(TARGETS) $(TEST_TARGETS)
 
 # All Target
-all: debug
+all: debug valgrind lcov cppcheck
 
 # Build targets
 release: CPP_FLAGS += $(CPP_PROJECT_FLAGS) $(CPP_RELEASE_FLAGS)

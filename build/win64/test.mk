@@ -2,7 +2,7 @@ define TEST_RULE
 $(1): OBJ := $(1).obj
 $(1): DIR := $(2)
 $(1): TEST := $(3)
-$(1): $(2)$(3).cpp $(TEST_OBJS) $(CPP_SRCS) $(CPP_INCS)
+$(1): $(2)$(3).cpp $(TEST_OBJS) $(CPP_SRCS) $(CPP_INCS) $(TEST_INCS)
 	@echo 'Building Test: $(3)'
 	@echo 'Invoking: GCC C++ Compiler'
 	@$(MKDIR) build/$$(DIR)
