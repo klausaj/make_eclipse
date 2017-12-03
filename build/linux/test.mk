@@ -60,11 +60,12 @@ ifeq ($(TEST_TARGETS),)
 	@echo 'Skipping test coverage report'
 else
 	@echo 'Generating test coverage report'
+	@echo '$(CURDIR)'
 	@$(MKDIR) report/lcov
 	@lcov --capture --directory build --output-file report/coverage.info
-	@lcov --remove report/coverage.info "/usr*" --output-file report/coverage.info
+	@lcov --extract report/coverage.info "$(CURDIR)*" --output-file report/coverage.info
 	@lcov --remove report/coverage.info "test*" --output-file report/coverage.info
-	@genhtml report/coverage.info --output-directory report/lcov
+	@genhtml -p "$(CURDIR)" report/coverage.info --output-directory report/lcov
 	@echo 'Finished generating test coverage report'
 	@echo ' '
 endif
